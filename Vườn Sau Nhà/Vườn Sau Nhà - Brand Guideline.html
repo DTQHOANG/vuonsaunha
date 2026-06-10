@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vườn Sau Nhà — Brand Guideline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* Core palette */
+    --do-dau-chin:   #D94040;  /* Primary  */
+    --hong-dau-non:  #F07070;  /* Secondary */
+    --la-cao-nguyen: #2A7A3B;  /* Accent   */
+    --trang-suong:   #FFFFFF;  /* Base white */
+
+    /* Supporting / neutrals */
+    --kem-sua:       #FFF7EF;  /* paper background */
+    --nau-dat-vuon:  #3A241C;  /* deep text */
+    --la-non:        #5FA86A;  /* light green tint */
+    --vo-dau-mo:     #FBE3DC;  /* pale blush */
+
+    --maxw: 940px;
+    --r: 22px;
+    --shadow: 0 18px 50px -22px rgba(58,36,28,.45);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:"Be Vietnam Pro", system-ui, sans-serif;
+    color:var(--nau-dat-vuon);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #FFEFE6 0%, transparent 55%),
+      var(--kem-sua);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .doc{ position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:0 22px 80px; }
+
+  h1,h2,h3,h4,.display{ font-family:"Baloo 2", sans-serif; line-height:1.08; margin:0; }
+
+  /* ---------- shared bits ---------- */
+  .seed-rule{
+    height:14px; margin:0; border:0;
+    background-image:radial-gradient(circle, var(--hong-dau-non) 1.6px, transparent 2px);
+    background-size:18px 14px; opacity:.6;
+  }
+  .kicker{
+    font-family:"Baloo 2",sans-serif; font-weight:700; letter-spacing:.16em;
+    text-transform:uppercase; font-size:.74rem; color:var(--la-cao-nguyen);
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker .num{
+    background:var(--la-cao-nguyen); color:#fff; width:26px; height:26px;
+    border-radius:50%; display:grid; place-items:center; font-size:.78rem; flex:none;
+  }
+  section{ margin-top:64px; }
+  .lead{ font-size:1.08rem; max-width:62ch; }
+
+  /* ---------- cover ---------- */
+  .cover{
+    position:relative; margin-top:26px; border-radius:28px; overflow:hidden;
+    background:
+      radial-gradient(140% 120% at 85% 8%, var(--hong-dau-non) 0%, var(--do-dau-chin) 46%, #B82F2F 100%);
+    color:#fff; box-shadow:var(--shadow);
+  }
+  .cover .seeds{
+    position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(circle, rgba(255,255,255,.9) 1.7px, transparent 2.2px);
+    background-size:30px 30px; background-position:0 0;
+    -webkit-mask-image:radial-gradient(120% 100% at 50% 0%, #000 60%, transparent 100%);
+            mask-image:radial-gradient(120% 100% at 50% 0%, #000 60%, transparent 100%);
+  }
+  .cover-inner{ position:relative; padding:54px 50px 48px; }
+  .cover .tagrow{ display:flex; align-items:center; gap:12px; font-family:"Baloo 2"; font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; opacity:.92; }
+  .cover .leaf-dot{ width:9px; height:9px; border-radius:50%; background:#bff0c4; box-shadow:0 0 0 3px rgba(255,255,255,.18); }
+  .cover h1{ font-size:clamp(3rem,9vw,5.6rem); font-weight:800; margin:18px 0 6px; text-shadow:0 6px 0 rgba(0,0,0,.08); }
+  .cover .sub{ font-size:1.15rem; max-width:46ch; opacity:.95; font-weight:500; }
+  .logo-badge{
+    position:absolute; right:46px; bottom:-26px; width:188px; height:188px;
+    background:#fff; border-radius:50%; display:grid; place-items:center;
+    box-shadow:0 22px 50px -16px rgba(120,20,20,.6); border:6px solid rgba(255,255,255,.7);
+  }
+  .logo-badge img{ width:84%; height:84%; object-fit:contain; }
+  .cover-meta{ display:flex; gap:26px; flex-wrap:wrap; margin-top:30px; font-size:.92rem; }
+  .cover-meta b{ font-family:"Baloo 2"; display:block; font-size:1.02rem; }
+  .cover-meta span{ opacity:.82; }
+
+  /* ---------- intro story ---------- */
+  .story{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:34px; align-items:center;
+    background:var(--trang-suong); border-radius:var(--r); padding:38px 40px;
+    box-shadow:var(--shadow); border:1px solid #f0ddd2;
+  }
+  .story h2{ font-size:2rem; color:var(--do-dau-chin); margin-bottom:14px; }
+  .essence{ display:flex; flex-wrap:wrap; gap:8px; }
+  .essence span{
+    font-family:"Baloo 2"; font-weight:600; font-size:.86rem; padding:7px 14px; border-radius:999px;
+    background:var(--vo-dau-mo); color:var(--do-dau-chin);
+  }
+  .essence span.g{ background:#E1F2E3; color:var(--la-cao-nguyen); }
+  .basket{
+    aspect-ratio:1; border-radius:22px; background:linear-gradient(160deg,#FFEDE6,#FFF);
+    border:2px dashed var(--hong-dau-non); display:grid; place-items:center; position:relative; overflow:hidden;
+  }
+  .basket img{ width:78%; }
+
+  /* ---------- colors ---------- */
+  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:24px; }
+  .swatch{ border-radius:18px; overflow:hidden; background:#fff; box-shadow:var(--shadow); border:1px solid #f0ddd2; }
+  .swatch .chip{ height:128px; display:flex; align-items:flex-end; padding:12px; }
+  .swatch .chip .role{ font-family:"Baloo 2"; font-weight:700; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px; background:rgba(255,255,255,.85); color:var(--nau-dat-vuon); }
+  .swatch .meta{ padding:14px 15px 16px; }
+  .swatch .name{ font-family:"Baloo 2"; font-weight:700; font-size:1.04rem; }
+  .swatch .hex{ font-size:.82rem; letter-spacing:.04em; color:#9a7d70; text-transform:uppercase; margin-top:2px; }
+  .neutrals{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
+  .neutral{ display:flex; align-items:center; gap:11px; background:#fff; border:1px solid #f0ddd2; border-radius:14px; padding:8px 14px 8px 8px; font-size:.86rem; }
+  .neutral i{ width:34px; height:34px; border-radius:9px; display:block; border:1px solid rgba(0,0,0,.06); }
+  .neutral b{ font-family:"Baloo 2"; }
+  .neutral .h{ color:#9a7d70; font-size:.78rem; }
+
+  /* ---------- typography ---------- */
+  .type-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+  .type-card{ background:#fff; border-radius:var(--r); padding:28px 30px; box-shadow:var(--shadow); border:1px solid #f0ddd2; }
+  .type-card .tag{ font-family:"Baloo 2"; font-weight:700; color:var(--la-cao-nguyen); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
+  .type-card .fname{ font-family:"Baloo 2"; font-weight:800; font-size:2.1rem; margin:4px 0 2px; }
+  .type-card .glyphs{ font-size:2.4rem; line-height:1.2; margin:14px 0 10px; }
+  .type-card.body .glyphs{ font-family:"Be Vietnam Pro"; font-weight:500; }
+  .type-card .desc{ font-size:.9rem; color:#6e5347; }
+  .type-card .weights{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; font-size:.8rem; }
+  .type-card .weights span{ background:var(--kem-sua); border:1px solid #f0ddd2; border-radius:8px; padding:4px 10px; }
+  .scale{ margin-top:18px; background:#fff; border-radius:var(--r); padding:26px 30px; box-shadow:var(--shadow); border:1px solid #f0ddd2; }
+  .scale .row{ display:flex; align-items:baseline; gap:18px; padding:10px 0; border-bottom:1px dashed #f0ddd2; }
+  .scale .row:last-child{ border-bottom:0; }
+  .scale .lbl{ font-size:.74rem; color:#9a7d70; width:90px; flex:none; text-transform:uppercase; letter-spacing:.08em; }
+  .scale .ex{ font-family:"Baloo 2"; font-weight:700; color:var(--nau-dat-vuon); }
+
+  /* ---------- logo usage ---------- */
+  .logo-frames{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px; }
+  .lf{ border-radius:18px; padding:22px; min-height:160px; display:grid; place-items:center; position:relative; }
+  .lf img{ width:74%; max-width:150px; }
+  .lf.on-white{ background:#fff; border:1px solid #f0ddd2; }
+  .lf.on-cream{ background:var(--kem-sua); border:1px solid #f0ddd2; }
+  .lf.on-tint{ background:var(--vo-dau-mo); border:1px solid #f3d3c9; }
+  .lf .cap{ position:absolute; top:10px; left:12px; font-size:.7rem; font-family:"Baloo 2"; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#9a7d70; }
+  .rules{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+  .rule-col{ background:#fff; border-radius:var(--r); padding:24px 26px; box-shadow:var(--shadow); border:1px solid #f0ddd2; }
+  .rule-col h3{ display:flex; align-items:center; gap:10px; font-size:1.15rem; margin-bottom:12px; }
+  .rule-col.do h3{ color:var(--la-cao-nguyen); }
+  .rule-col.dont h3{ color:var(--do-dau-chin); }
+  .rule-col ul{ list-style:none; margin:0; padding:0; }
+  .rule-col li{ display:flex; gap:10px; padding:7px 0; font-size:.92rem; border-bottom:1px dashed #f5e6dd; }
+  .rule-col li:last-child{ border-bottom:0; }
+  .rule-col li .ic{ flex:none; font-family:"Baloo 2"; font-weight:800; width:22px; height:22px; border-radius:50%; display:grid; place-items:center; font-size:.8rem; color:#fff; }
+  .do .ic{ background:var(--la-cao-nguyen); }
+  .dont .ic{ background:var(--do-dau-chin); }
+  .badge-icon{ width:26px; height:26px; border-radius:50%; display:grid; place-items:center; color:#fff; font-family:"Baloo 2"; font-weight:800; }
+
+  /* ---------- tone of voice ---------- */
+  .tov-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px; }
+  .tov{ background:#fff; border-radius:var(--r); padding:26px 28px; box-shadow:var(--shadow); border:1px solid #f0ddd2; position:relative; overflow:hidden; }
+  .tov .n{ font-family:"Baloo 2"; font-weight:800; font-size:2.6rem; color:var(--vo-dau-mo); position:absolute; right:18px; top:6px; }
+  .tov h3{ font-size:1.3rem; color:var(--do-dau-chin); }
+  .tov .p-sub{ font-size:.9rem; color:#6e5347; margin:6px 0 16px; max-width:38ch; }
+  .quote{ border-radius:14px; padding:11px 14px; font-size:.92rem; margin-top:8px; display:flex; gap:10px; align-items:flex-start; }
+  .quote.yes{ background:#E9F5EB; }
+  .quote.no{ background:var(--vo-dau-mo); }
+  .quote .t{ font-family:"Baloo 2"; font-weight:700; flex:none; }
+  .quote.yes .t{ color:var(--la-cao-nguyen); }
+  .quote.no .t{ color:var(--do-dau-chin); }
+  .quote.no span{ text-decoration:line-through; text-decoration-color:rgba(217,64,64,.5); }
+
+  /* ---------- copy examples ---------- */
+  .tagline-band{
+    margin-top:24px; border-radius:var(--r); padding:46px 40px; text-align:center; color:#fff; position:relative; overflow:hidden;
+    background:radial-gradient(120% 140% at 50% 0%, var(--la-non) 0%, var(--la-cao-nguyen) 70%);
+  }
+  .tagline-band .seeds{ position:absolute; inset:0; opacity:.35; background-image:radial-gradient(circle, rgba(255,255,255,.8) 1.5px, transparent 2px); background-size:26px 26px; }
+  .tagline-band .small{ position:relative; font-family:"Baloo 2"; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.76rem; opacity:.9; }
+  .tagline-band .big{ position:relative; font-family:"Baloo 2"; font-weight:800; font-size:clamp(1.8rem,5vw,3rem); margin-top:8px; }
+  .tagline-band .alts{ position:relative; margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; font-size:.9rem; }
+  .tagline-band .alts span{ background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:6px 14px; border-radius:999px; }
+
+  .copy-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:18px; margin-top:18px; }
+  .fb-card{ background:#fff; border-radius:var(--r); padding:0; box-shadow:var(--shadow); border:1px solid #f0ddd2; overflow:hidden; }
+  .fb-head{ display:flex; align-items:center; gap:11px; padding:16px 18px 10px; }
+  .fb-ava{ width:42px; height:42px; border-radius:50%; background:#fff; border:2px solid var(--vo-dau-mo); display:grid; place-items:center; overflow:hidden; flex:none; }
+  .fb-ava img{ width:90%; }
+  .fb-name{ font-family:"Baloo 2"; font-weight:700; font-size:.96rem; }
+  .fb-name .time{ display:block; font-family:"Be Vietnam Pro"; font-weight:400; font-size:.74rem; color:#9a7d70; }
+  .fb-body{ padding:0 18px 14px; font-size:.94rem; }
+  .fb-body .hash{ color:var(--la-cao-nguyen); font-weight:500; }
+  .fb-photo{ height:150px; background:linear-gradient(135deg,var(--hong-dau-non),var(--do-dau-chin)); position:relative; display:grid; place-items:center; }
+  .fb-photo .seeds{ position:absolute; inset:0; opacity:.4; background-image:radial-gradient(circle, rgba(255,255,255,.85) 1.6px, transparent 2px); background-size:24px 24px; }
+  .fb-photo span{ position:relative; color:#fff; font-family:"Baloo 2"; font-weight:700; opacity:.85; font-size:.82rem; letter-spacing:.05em; }
+  .fb-actions{ display:flex; gap:20px; padding:10px 18px; border-top:1px solid #f5e6dd; font-size:.82rem; color:#9a7d70; }
+
+  .names-card{ background:#fff; border-radius:var(--r); padding:24px 26px; box-shadow:var(--shadow); border:1px solid #f0ddd2; }
+  .names-card h3{ font-size:1.1rem; color:var(--do-dau-chin); margin-bottom:6px; }
+  .names-card .sub{ font-size:.84rem; color:#6e5347; margin-bottom:12px; }
+  .pname{ display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px dashed #f5e6dd; }
+  .pname:last-child{ border-bottom:0; }
+  .pname b{ font-family:"Baloo 2"; }
+  .pname .left{ display:flex; align-items:center; gap:9px; }
+  .pname .sz{ font-family:"Baloo 2"; font-weight:800; font-size:.7rem; min-width:30px; text-align:center; padding:3px 9px; border-radius:999px; background:var(--do-dau-chin); color:#fff; letter-spacing:.04em; flex:none; }
+  .pname .d{ font-size:.8rem; color:#9a7d70; text-align:right; }
+
+  /* ---------- patterns ---------- */
+  .pat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px; }
+  .pat{ border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #f0ddd2; background:#fff; }
+  .pat .swatch-box{ height:150px; position:relative; }
+  .pat .meta{ padding:14px 16px; }
+  .pat .meta b{ font-family:"Baloo 2"; display:block; }
+  .pat .meta span{ font-size:.82rem; color:#6e5347; }
+  .p-seeds{ background:var(--do-dau-chin); background-image:radial-gradient(circle, rgba(255,255,255,.9) 2px, transparent 2.6px); background-size:24px 24px; }
+  .p-stripe{ background:repeating-linear-gradient(135deg, var(--vo-dau-mo) 0 16px, #fff 16px 32px); }
+  .p-leaves{ background:#E7F3E9; position:relative; }
+  .p-leaves svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .p-check{ background:conic-gradient(from 0deg, var(--do-dau-chin) 0 25%, #C9302F 0 50%, var(--do-dau-chin) 0 75%, #C9302F 0 100%); background-size:34px 34px; }
+  .p-dots-cream{ background:var(--kem-sua); background-image:radial-gradient(circle, var(--hong-dau-non) 2px, transparent 2.6px); background-size:22px 22px; }
+  .p-arch{ background:var(--la-cao-nguyen); position:relative; }
+  .p-arch svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+  /* ---------- footer ---------- */
+  footer{ margin-top:64px; text-align:center; color:#9a7d70; font-size:.86rem; }
+  footer .heart{ color:var(--do-dau-chin); }
+  footer .place{ font-family:"Baloo 2"; font-weight:700; color:var(--la-cao-nguyen); }
+
+  @media (max-width:760px){
+    .story,.type-grid,.rules,.tov-grid,.copy-grid{ grid-template-columns:1fr; }
+    .swatches{ grid-template-columns:repeat(2,1fr); }
+    .logo-frames,.pat-grid{ grid-template-columns:1fr 1fr; }
+    .logo-badge{ position:static; margin:24px auto 0; }
+    .cover-inner{ padding:40px 26px; }
+  }
+  @media print{
+    body::before{ display:none; }
+    .cover,.tagline-band,.swatch,.type-card,.tov,.rule-col,.fb-card,.names-card,.pat,.story,.scale{ box-shadow:none; }
+    section{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- ============ COVER ============ -->
+  <header class="cover">
+    <div class="seeds"></div>
+    <div class="cover-inner">
+      <div class="tagrow"><span class="leaf-dot"></span> Brand Guideline · 2026</div>
+      <h1>Vườn Sau Nhà</h1>
+      <p class="sub">Dâu tây trồng tại Pleiku — từ cây giống bé xíu đến cây sai trĩu quả. Mang khu vườn cao nguyên về sân sau nhà bạn.</p>
+      <div class="cover-meta">
+        <div><b>Sản phẩm</b><span>Cây dâu tây mọi kích cỡ</span></div>
+        <div><b>Vùng đất</b><span>Pleiku, Gia Lai</span></div>
+        <div><b>Dành cho</b><span>Mẹ bỉm · gia đình · người mê trồng cây</span></div>
+      </div>
+      <div class="logo-badge"><img src="assets/logo.png" alt="Logo Vườn Sau Nhà" /></div>
+    </div>
+  </header>
+
+  <!-- ============ STORY ============ -->
+  <section>
+    <div class="story">
+      <div>
+        <div class="kicker"><span class="num">0</span> Tinh thần thương hiệu</div>
+        <h2>Cao nguyên gió mát, gửi vào từng chậu dâu.</h2>
+        <p class="lead">Vườn Sau Nhà nói chuyện như một người hàng xóm thiệt tình ở Pleiku: chân thật, tươi mát và đầy yêu thương. Chúng mình không bán cây — chúng mình trao đi niềm vui được tự tay chăm một mầm dâu cho tới ngày hái quả chín đỏ.</p>
+        <div class="essence" style="margin-top:16px">
+          <span>Gần gũi</span><span>Chân thật</span><span class="g">Tươi mát</span>
+          <span>Phóng khoáng</span><span class="g">Địa phương</span><span>Yêu thương</span>
+        </div>
+      </div>
+      <div class="basket"><img src="assets/logo.png" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- ============ COLORS ============ -->
+  <section>
+    <div class="kicker"><span class="num">1</span> Bảng màu</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Màu của dâu chín &amp; lá non</h2>
+    <p class="lead">Lấy thẳng từ logo: đỏ dâu làm chủ đạo, xanh lá làm điểm nhấn tươi mát, trên nền trắng &amp; kem ấm.</p>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:var(--do-dau-chin)"><span class="role">Primary</span></div>
+        <div class="meta"><div class="name">Đỏ Dâu Chín</div><div class="hex">#D94040</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--hong-dau-non)"><span class="role">Secondary</span></div>
+        <div class="meta"><div class="name">Hồng Dâu Non</div><div class="hex">#F07070</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--la-cao-nguyen)"><span class="role" style="color:#fff;background:rgba(0,0,0,.2)">Accent</span></div>
+        <div class="meta"><div class="name">Lá Xanh Cao Nguyên</div><div class="hex">#2A7A3B</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--trang-suong);border-bottom:1px solid #f0ddd2"><span class="role" style="border:1px solid #eee">Nền</span></div>
+        <div class="meta"><div class="name">Trắng Sương Sớm</div><div class="hex">#FFFFFF</div></div>
+      </div>
+    </div>
+
+    <p style="margin:22px 0 0;font-family:'Baloo 2';font-weight:700;font-size:.86rem;color:#9a7d70;letter-spacing:.08em;text-transform:uppercase">Màu hỗ trợ</p>
+    <div class="neutrals">
+      <div class="neutral"><i style="background:var(--kem-sua)"></i><div><b>Kem Sữa</b><div class="h">#FFF7EF · nền giấy</div></div></div>
+      <div class="neutral"><i style="background:var(--nau-dat-vuon)"></i><div><b>Nâu Đất Vườn</b><div class="h">#3A241C · chữ</div></div></div>
+      <div class="neutral"><i style="background:var(--la-non)"></i><div><b>Lá Non</b><div class="h">#5FA86A · xanh nhạt</div></div></div>
+      <div class="neutral"><i style="background:var(--vo-dau-mo)"></i><div><b>Má Hồng Dâu</b><div class="h">#FBE3DC · nền nhạt</div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ TYPOGRAPHY ============ -->
+  <section>
+    <div class="kicker"><span class="num">2</span> Typography</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Tròn trịa &amp; dễ thương như trái dâu</h2>
+    <p class="lead">Cả hai font đều hỗ trợ đầy đủ dấu tiếng Việt và có miễn phí trên Google Fonts.</p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="tag">Font chính · Tiêu đề</div>
+        <div class="fname">Baloo 2</div>
+        <div class="glyphs">Vườn Sau Nhà</div>
+        <div class="desc">Bo tròn, ấm áp, vui tươi — đúng tinh thần "vườn nhà". Dùng cho tên thương hiệu, tiêu đề, tagline, tên sản phẩm.</div>
+        <div class="weights"><span>Medium 500</span><span>SemiBold 600</span><span>Bold 700</span><span>ExtraBold 800</span></div>
+      </div>
+      <div class="type-card body">
+        <div class="tag">Font phụ · Nội dung</div>
+        <div class="fname" style="font-family:'Be Vietnam Pro';font-weight:700">Be Vietnam Pro</div>
+        <div class="glyphs">Dâu tây tươi mỗi sáng</div>
+        <div class="desc">Thiết kế dành riêng cho tiếng Việt — sạch, dễ đọc, chuyên nghiệp. Dùng cho đoạn văn, caption, mô tả, thông tin.</div>
+        <div class="weights"><span>Regular 400</span><span>Medium 500</span><span>SemiBold 600</span><span>Italic</span></div>
+      </div>
+    </div>
+
+    <div class="scale">
+      <div class="row"><div class="lbl">H1 · 56px</div><div class="ex" style="font-size:2.4rem">Dâu nhà trồng, ngọt thiệt tình</div></div>
+      <div class="row"><div class="lbl">H2 · 32px</div><div class="ex" style="font-size:1.7rem">Cây giống khỏe, dễ chăm</div></div>
+      <div class="row"><div class="lbl">H3 · 22px</div><div class="ex" style="font-size:1.25rem">Hướng dẫn trồng tại nhà</div></div>
+      <div class="row"><div class="lbl">Body · 16px</div><div style="font-family:'Be Vietnam Pro';font-size:1rem">Mỗi cây được ươm tại vườn Pleiku, giao tận nơi cùng hướng dẫn chăm sóc dễ hiểu.</div></div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO USAGE ============ -->
+  <section>
+    <div class="kicker"><span class="num">3</span> Logo</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Cách dùng logo</h2>
+    <p class="lead">Logo gồm wordmark "Vườn Sau Nhà" ôm lấy trái dâu hình trái tim. Luôn giữ khoảng thở quanh logo tối thiểu bằng chiều cao chữ "N".</p>
+
+    <div class="logo-frames">
+      <div class="lf on-white"><span class="cap">Trên nền trắng</span><img src="assets/logo.png" alt="" /></div>
+      <div class="lf on-cream"><span class="cap">Trên nền kem</span><img src="assets/logo.png" alt="" /></div>
+      <div class="lf on-tint"><span class="cap">Trên nền màu sáng</span><img src="assets/logo.png" alt="" /></div>
+    </div>
+
+    <div class="rules">
+      <div class="rule-col do">
+        <h3><span class="badge-icon" style="background:var(--la-cao-nguyen)">✓</span> Nên</h3>
+        <ul>
+          <li><span class="ic">✓</span> Đặt trên nền sáng, sạch (trắng hoặc kem) để dâu &amp; lá nổi bật.</li>
+          <li><span class="ic">✓</span> Giữ nguyên tỉ lệ — phóng to/thu nhỏ luôn khóa tỉ lệ khung.</li>
+          <li><span class="ic">✓</span> Dùng trên nền sáng · màu nhạt (trắng, kem, hồng dâu) để logo nổi rõ.</li>
+          <li><span class="ic">✓</span> Chừa khoảng trống quanh logo cho thoáng.</li>
+        </ul>
+      </div>
+      <div class="rule-col dont">
+        <h3><span class="badge-icon" style="background:var(--do-dau-chin)">✕</span> Không nên</h3>
+        <ul>
+          <li><span class="ic">✕</span> Đổi màu dâu, lá hay wordmark sang màu khác.</li>
+          <li><span class="ic">✕</span> Kéo méo, nghiêng hoặc bóp tỉ lệ logo.</li>
+          <li><span class="ic">✕</span> Đặt trực tiếp lên nền đỏ/ảnh rối làm logo chìm.</li>
+          <li><span class="ic">✕</span> Thêm viền, bóng đổ nặng hay hiệu ứng lạ.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TONE OF VOICE ============ -->
+  <section>
+    <div class="kicker"><span class="num">4</span> Giọng nói thương hiệu</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Nói như người trồng dâu thiệt tình</h2>
+    <p class="lead">Bốn nguyên tắc giữ cho mọi câu chữ đều ấm, thật và gần.</p>
+
+    <div class="tov-grid">
+      <div class="tov">
+        <div class="n">01</div>
+        <h3>Gần gũi như hàng xóm</h3>
+        <p class="p-sub">Xưng "mình – bạn/nhà mình", dùng từ đời thường, đừng khách sáo.</p>
+        <div class="quote yes"><span class="t">NÊN</span> "Nhà mình mới hái mẻ dâu sáng nay, bạn ghé lấy cho tươi nha!"</div>
+        <div class="quote no"><span class="t">TRÁNH</span> <span>"Kính gửi quý khách hàng, sản phẩm đã sẵn sàng để phân phối."</span></div>
+      </div>
+
+      <div class="tov">
+        <div class="n">02</div>
+        <h3>Chân thật, không nổ</h3>
+        <p class="p-sub">Nói đúng thứ mình có. Cây đẹp khoe đẹp, cây cần chăm thì dặn thật.</p>
+        <div class="quote yes"><span class="t">NÊN</span> "Cây này còn nhỏ, chăm chừng 2 tháng là bắt đầu ra hoa nha bạn."</div>
+        <div class="quote no"><span class="t">TRÁNH</span> <span>"Giống dâu siêu cấp, trồng phát ăn liền, đảm bảo 100%!"</span></div>
+      </div>
+
+      <div class="tov">
+        <div class="n">03</div>
+        <h3>Tươi mát &amp; phóng khoáng</h3>
+        <p class="p-sub">Năng lượng cao nguyên: nhẹ nhõm, thoáng đãng, có chút nắng gió.</p>
+        <div class="quote yes"><span class="t">NÊN</span> "Sáng Pleiku se lạnh, dâu càng ngọt. Trồng một chậu cho ban công thêm xanh!"</div>
+        <div class="quote no"><span class="t">TRÁNH</span> <span>"Mua ngay kẻo hết! Số lượng có hạn! Inbox gấp!"</span></div>
+      </div>
+
+      <div class="tov">
+        <div class="n">04</div>
+        <h3>Yêu thương &amp; dặn dò</h3>
+        <p class="p-sub">Luôn quan tâm tới cây sau khi bán — như gửi con đi xa.</p>
+        <div class="quote yes"><span class="t">NÊN</span> "Cây về tới nhà nhớ cho uống nước, để chỗ mát vài hôm cho quen nha."</div>
+        <div class="quote no"><span class="t">TRÁNH</span> <span>"Đã giao hàng. Mọi vấn đề sau giao không thuộc trách nhiệm shop."</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COPY EXAMPLES ============ -->
+  <section>
+    <div class="kicker"><span class="num">5</span> Ví dụ câu chữ</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Lời ăn tiếng nói mẫu</h2>
+
+    <div class="tagline-band">
+      <div class="seeds"></div>
+      <div class="small">Tagline chính</div>
+      <div class="big">Mang vườn dâu về sân sau nhà bạn.</div>
+      <div class="alts">
+        <span>"Dâu nhà trồng, ngọt thiệt tình."</span>
+        <span>"Một chậu dâu, cả mùa vui."</span>
+        <span>"Từ Pleiku, tới ban công nhà bạn."</span>
+      </div>
+    </div>
+
+    <div class="copy-grid">
+      <div class="fb-card">
+        <div class="fb-head">
+          <div class="fb-ava"><img src="assets/logo.png" alt="" /></div>
+          <div class="fb-name">Vườn Sau Nhà <span class="time">Pleiku · 6 giờ · 🍓</span></div>
+        </div>
+        <div class="fb-body">
+          Sáng nay vườn se lạnh, dâu chín đỏ cả luống 🍓 Nhà mình vừa tách được mẻ cây con khỏe re, lá xanh mướt, rễ bám chắc.<br /><br />
+          Bạn nào đang muốn tập trồng cho bé ở nhà thì nhắn mình nha — mình gửi kèm hướng dẫn chăm dễ thương, ai trồng lần đầu cũng làm được. Cây về tới nhà nhớ cho uống nước, để chỗ mát vài hôm cho quen khí hậu nè 💚<br /><br />
+          <span class="hash">#VuonSauNha #DauTayPleiku #TrongDauTaiNha</span>
+        </div>
+        <div class="fb-photo"><div class="seeds"></div><span>[ Ảnh thật: luống dâu chín buổi sáng ]</span></div>
+        <div class="fb-actions"><span>👍 Thích</span><span>💬 Bình luận</span><span>↗ Chia sẻ</span></div>
+      </div>
+
+      <div class="names-card">
+        <h3>Tên sản phẩm</h3>
+        <div class="sub">Tên gắn liền size cụ thể — nhìn là biết cây lớn cỡ nào.</div>
+        <div class="pname"><span class="left"><b>Dâu Mầm Nhí</b><span class="sz">S</span></span><span class="d">cây giống · cao 5–10cm<br />cho người mới tập trồng</span></div>
+        <div class="pname"><span class="left"><b>Dâu Choai Choai</b><span class="sz">M</span></span><span class="d">cao 15–25cm · nhiều lá<br />đang lớn, sắp ra hoa</span></div>
+        <div class="pname"><span class="left"><b>Dâu Sai Trĩu</b><span class="sz">L</span></span><span class="d">cây trưởng thành 30cm+<br />đang ra hoa &amp; có quả</span></div>
+        <div class="pname"><span class="left"><b>Dâu Bự Chảng</b><span class="sz">XL</span></span><span class="d">chậu lớn · gốc sum suê<br />sai quả, ăn liền tay</span></div>
+        <div class="pname"><span class="left"><b>Combo Ban Công</b><span class="sz">SET</span></span><span class="d">chậu + cây + đất + phân<br />về tới là trồng ngay</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PATTERNS ============ -->
+  <section>
+    <div class="kicker"><span class="num">6</span> Họa tiết</div>
+    <h2 style="font-size:2.1rem;margin:10px 0 4px;color:var(--nau-dat-vuon)">Pattern &amp; chất liệu</h2>
+    <p class="lead">Lấy cảm hứng từ chính trái dâu trong logo — hạt dâu, vỏ caro, lá non. Dùng làm nền banner, bao bì, story.</p>
+
+    <div class="pat-grid">
+      <div class="pat">
+        <div class="swatch-box p-seeds"></div>
+        <div class="meta"><b>Hạt Dâu</b><span>Chấm trắng rải đều trên nền đỏ — chữ ký của thương hiệu.</span></div>
+      </div>
+      <div class="pat">
+        <div class="swatch-box p-check"></div>
+        <div class="meta"><b>Vỏ Dâu Caro</b><span>Ô caro đỏ đậm–nhạt, gợi mặt cắt trái dâu trong logo.</span></div>
+      </div>
+      <div class="pat">
+        <div class="swatch-box p-leaves">
+          <svg viewBox="0 0 120 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#2A7A3B" opacity="0.55">
+              <path d="M20 30 q12 -16 26 0 q-12 16 -26 0 Z"/>
+              <path d="M70 18 q12 -16 26 0 q-12 16 -26 0 Z"/>
+              <path d="M45 70 q12 -16 26 0 q-12 16 -26 0 Z"/>
+              <path d="M88 78 q12 -16 26 0 q-12 16 -26 0 Z"/>
+              <path d="M8 88 q12 -16 26 0 q-12 16 -26 0 Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="meta"><b>Lá Non Bay</b><span>Lá xanh rải thưa trên nền xanh nhạt — nhẹ, thoáng, mát.</span></div>
+      </div>
+      <div class="pat">
+        <div class="swatch-box p-dots-cream"></div>
+        <div class="meta"><b>Chấm Hồng Trên Kem</b><span>Bản nhạt của hạt dâu — dùng làm nền nội dung dài.</span></div>
+      </div>
+      <div class="pat">
+        <div class="swatch-box p-stripe"></div>
+        <div class="meta"><b>Sọc Khăn Vườn</b><span>Sọc chéo hồng–trắng, gợi khăn trải bàn kiểu nhà vườn.</span></div>
+      </div>
+      <div class="pat">
+        <div class="swatch-box p-arch">
+          <svg viewBox="0 0 120 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="rgba(255,255,255,.5)" stroke-width="3">
+              <path d="M0 110 q15 -40 30 0 M30 110 q15 -40 30 0 M60 110 q15 -40 30 0 M90 110 q15 -40 30 0"/>
+              <path d="M15 110 q15 -55 30 0 M45 110 q15 -55 30 0 M75 110 q15 -55 30 0"/>
+            </g>
+          </svg>
+        </div>
+        <div class="meta"><b>Luống Vườn</b><span>Đường vòm gợi luống dâu — dùng viền chân trang, footer.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="seed-rule" style="margin-top:56px" />
+  <footer>
+    <p>Trồng &amp; chăm bằng <span class="heart">♥</span> tại <span class="place">Pleiku, Gia Lai</span><br />
+    Vườn Sau Nhà · Brand Guideline 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

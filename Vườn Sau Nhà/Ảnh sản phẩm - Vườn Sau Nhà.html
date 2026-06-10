@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vườn Sau Nhà — Ảnh sản phẩm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --do:#D94040; --hong:#F07070; --la:#2A7A3B; --kem:#FFF7EF; --nau:#3A241C; --vo:#FBE3DC;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Be Vietnam Pro",sans-serif; background:#EDE3DA; padding:40px; }
+
+  .page-head{ max-width:1180px; margin:0 auto 30px; font-family:"Baloo 2"; color:var(--nau); }
+  .page-head h1{ font-size:1.7rem; color:var(--do); }
+  .page-head p{ font-family:"Be Vietnam Pro"; font-size:.95rem; color:#6e5347; margin-top:4px; }
+
+  .deck{ display:flex; flex-wrap:wrap; gap:36px; justify-content:center; }
+
+  /* scaled preview wrapper reserves correct space */
+  .thumb{ width:460px; height:460px; flex:none; }
+  .thumb .card{ transform:scale(0.42592); transform-origin:top left; }
+
+  /* 1080x1080 export card */
+  .card{
+    width:1080px; height:1080px; position:relative; overflow:hidden;
+    background:var(--kem);
+  }
+  .card .photo{ position:absolute; inset:0; }
+  .card .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .card .seed-border{
+    position:absolute; inset:34px; border-radius:40px; pointer-events:none;
+    box-shadow:0 0 0 6px rgba(255,255,255,.9), 0 0 0 9px rgba(217,64,64,.35);
+  }
+
+  .pill{
+    position:absolute; top:64px; left:64px; z-index:3;
+    font-family:"Baloo 2"; font-weight:800; font-size:34px; letter-spacing:.02em;
+    color:#fff; padding:16px 30px; border-radius:999px; white-space:nowrap;
+    box-shadow:0 16px 40px -14px rgba(0,0,0,.55);
+  }
+
+  .badge{
+    position:absolute; top:54px; right:54px; z-index:3;
+    width:148px; height:148px; border-radius:50%; background:#fff;
+    display:grid; place-items:center;
+    box-shadow:0 18px 44px -14px rgba(120,20,20,.55);
+  }
+  .badge img{ width:78%; height:78%; object-fit:contain; }
+
+  .ribbon{
+    position:absolute; left:0; right:0; bottom:0; z-index:3;
+    padding:210px 64px 56px;
+    background:linear-gradient(to top, rgba(58,36,28,.93) 0%, rgba(58,36,28,.74) 46%, transparent 100%);
+    color:#fff;
+  }
+  .ribbon .seeds{
+    position:absolute; left:0; right:0; bottom:0; height:100%;
+    background-image:radial-gradient(circle, rgba(255,255,255,.12) 2px, transparent 3px);
+    background-size:34px 34px; pointer-events:none;
+    -webkit-mask-image:linear-gradient(to top, #000 30%, transparent 80%);
+            mask-image:linear-gradient(to top, #000 30%, transparent 80%);
+  }
+  .ribbon .name{ position:relative; font-family:"Baloo 2"; font-weight:800; font-size:76px; line-height:1.02; }
+  .ribbon .desc{ position:relative; font-family:"Be Vietnam Pro"; font-weight:500; font-size:32px; opacity:.95; margin-top:12px; max-width:780px; }
+  .ribbon .meta{ position:relative; display:flex; align-items:center; gap:14px; margin-top:26px; font-family:"Baloo 2"; font-weight:700; font-size:28px; }
+  .ribbon .meta .leaf{ width:16px; height:16px; border-radius:50%; background:#8ee39a; flex:none; }
+  .ribbon .meta .sep{ opacity:.5; }
+
+  /* ---- export isolate mode ---- */
+  body.isolate{ padding:0; background:#fff; }
+  body.isolate .page-head, body.isolate .deck{ display:none; }
+  body.isolate .export-stage{ display:block; }
+  .export-stage{ display:none; width:1080px; height:1080px; }
+  .export-stage .card{ transform:none; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Ảnh sản phẩm · 1080×1080</h1>
+    <p>Định dạng vuông chuẩn sàn TMĐT (Shopee · Lazada · TikTok Shop). Bản xem trước thu nhỏ — file PNG xuất ra ở kích thước đầy đủ 1080×1080.</p>
+  </div>
+
+  <div class="deck">
+    <div class="thumb"><div class="card" data-card="0"></div></div>
+    <div class="thumb"><div class="card" data-card="1"></div></div>
+    <div class="thumb"><div class="card" data-card="2"></div></div>
+  </div>
+
+  <!-- stage used only during PNG export -->
+  <div class="export-stage" id="stage"></div>
+
+<script>
+  const CARDS = [
+    {
+      img:"assets/cay-dau-con.png",
+      pill:"CẤY MÔ", pillColor:"var(--la)",
+      name:"Cây dâu con cấy mô",
+      desc:"Mầm sạch bệnh, rễ khỏe — khởi đầu lý tưởng cho người mới tập trồng."
+    },
+    {
+      img:"assets/hana.png",
+      pill:"GIỐNG HANA", pillColor:"var(--do)",
+      name:"Dâu Hana",
+      desc:"Quả to, đỏ mọng, ngọt đậm — giống được yêu thích nhất nhà vườn."
+    },
+    {
+      img:"assets/nhat-lun.png",
+      pill:"GIỐNG NHẬT LÙN", pillColor:"var(--do)",
+      name:"Dâu Nhật lùn",
+      desc:"Cây gọn, sai quả — hợp trồng chậu & ban công nhà phố."
+    }
+  ];
+
+  function cardHTML(c){
+    return `
+      <div class="photo"><img src="${c.img}" alt=""></div>
+      <div class="seed-border"></div>
+      <div class="pill" style="background:${c.pillColor}">${c.pill}</div>
+      <div class="badge"><img src="assets/logo.png" alt=""></div>
+      <div class="ribbon">
+        <div class="seeds"></div>
+        <div class="name">${c.name}</div>
+        <div class="desc">${c.desc}</div>
+        <div class="meta"><span class="leaf"></span> Vườn Sau Nhà <span class="sep">·</span> Pleiku, Gia Lai</div>
+      </div>`;
+  }
+
+  // fill preview thumbnails
+  document.querySelectorAll('.deck .card').forEach((el,i)=> el.innerHTML = cardHTML(CARDS[i]));
+
+  // export helper: window.__showCard(i) renders a single full-size card for capture
+  window.__showCard = function(i){
+    const stage = document.getElementById('stage');
+    stage.innerHTML = '<div class="card" style="transform:none">'+cardHTML(CARDS[i])+'</div>';
+    document.body.classList.add('isolate');
+    window.scrollTo(0,0);
+    return CARDS[i].name;
+  };
+</script>
+</body>
+</html>

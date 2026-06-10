@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Đánh Giá 5⭐ Cây Dâu Tây – Vườn Sau Nhà</title>
+<style>
+  :root {
+    --red: #ee4d2d;
+    --red-light: #fff2ef;
+    --gold: #ffb800;
+    --green: #26aa99;
+    --bg: #f4f4f4;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #999;
+    --border: #eee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #ee4d2d 0%, #c0392b 100%);
+    color: white; padding: 24px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 3px 12px rgba(0,0,0,.2);
+  }
+  .header-left h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.3px; }
+  .header-left p  { font-size: .88rem; opacity: .82; margin-top: 4px; }
+  .header-badge {
+    background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4);
+    border-radius: 50px; padding: 6px 18px; font-size: .85rem; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* ── STATS BAR ── */
+  .stats {
+    background: white; margin: 20px 40px 0; border-radius: 12px;
+    padding: 16px 28px; display: flex; gap: 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+  }
+  .stat { flex: 1; text-align: center; padding: 0 16px; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat .num { font-size: 2rem; font-weight: 800; color: var(--red); line-height: 1.1; }
+  .stat .lbl { font-size: .75rem; color: var(--muted); margin-top: 3px; }
+
+  /* ── NOTICE ── */
+  .notice {
+    margin: 14px 40px 0; background: #fffbea; border-left: 4px solid var(--gold);
+    padding: 10px 16px; border-radius: 0 8px 8px 0;
+    font-size: .82rem; color: #7a5800;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 22px; padding: 22px 40px 50px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card); border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+
+  .card-top {
+    background: linear-gradient(135deg, #fff8f6, #fff);
+    padding: 14px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .badge-num {
+    width: 32px; height: 32px; background: var(--red); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .85rem; flex-shrink: 0;
+  }
+  .user-block { flex: 1; margin: 0 12px; }
+  .username { font-weight: 700; font-size: .95rem; }
+  .meta { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+  .stars { color: var(--gold); font-size: 1.15rem; letter-spacing: 2px; flex-shrink: 0; }
+
+  .card-body { padding: 16px 18px; flex: 1; }
+
+  .product-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--red-light); color: var(--red);
+    font-size: .75rem; font-weight: 700; padding: 4px 10px;
+    border-radius: 20px; margin-bottom: 10px; max-width: 100%;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .comment {
+    font-size: .88rem; line-height: 1.7; color: #444;
+    margin-bottom: 14px; white-space: pre-wrap;
+  }
+
+  /* images */
+  .img-strip {
+    display: grid; gap: 5px; margin-bottom: 14px;
+  }
+  .img-strip.n1 { grid-template-columns: 1fr; }
+  .img-strip.n2 { grid-template-columns: 1fr 1fr; }
+  .img-strip.n3 { grid-template-columns: 1fr 1fr 1fr; }
+  .img-strip.n4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .img-strip.n5 { grid-template-columns: repeat(3,1fr); }
+  .img-strip.n5 .thumb:first-child { grid-column: span 1; }
+
+  .thumb {
+    aspect-ratio: 1; overflow: hidden; border-radius: 7px;
+    cursor: pointer; background: #f0f0f0; position: relative;
+  }
+  .thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .22s; display: block;
+  }
+  .thumb:hover img { transform: scale(1.09); }
+  .thumb .vid-badge {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; background: rgba(0,0,0,.35);
+  }
+  .thumb .vid-badge svg { width: 32px; height: 32px; fill: white; }
+
+  /* reply */
+  .reply {
+    background: #f8f8f8; border-left: 3px solid var(--red);
+    padding: 10px 14px; border-radius: 0 8px 8px 0;
+    font-size: .82rem; line-height: 1.55; color: #555;
+  }
+  .reply-lbl { font-size: .72rem; font-weight: 800; color: var(--red); margin-bottom: 4px; }
+
+  .follow-up {
+    margin-top: 10px; background: #f0fbf9; border-left: 3px solid var(--green);
+    padding: 10px 14px; border-radius: 0 8px 8px 0;
+    font-size: .82rem; line-height: 1.55; color: #444;
+  }
+  .follow-up-lbl { font-size: .72rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+
+  .order-tag {
+    font-size: .7rem; color: var(--muted); background: #f5f5f5;
+    padding: 2px 8px; border-radius: 4px; font-family: monospace;
+    display: inline-block; margin-bottom: 8px;
+  }
+
+  /* ── LIGHTBOX ── */
+  #lb {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.9); z-index: 9999;
+    flex-direction: column; align-items: center; justify-content: center;
+  }
+  #lb.on { display: flex; }
+  #lb-img { max-width: 92vw; max-height: 82vh; border-radius: 10px; object-fit: contain; }
+  #lb-close {
+    position: absolute; top: 18px; right: 24px;
+    color: white; font-size: 2.2rem; cursor: pointer; line-height: 1;
+    opacity: .8; transition: opacity .15s;
+  }
+  #lb-close:hover { opacity: 1; }
+  #lb-info { color: rgba(255,255,255,.65); font-size: .85rem; margin-top: 10px; }
+  .lb-btns { display: flex; gap: 10px; margin-top: 14px; }
+  .lb-btns button {
+    background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+    color: white; padding: 7px 22px; border-radius: 30px; cursor: pointer;
+    font-size: .88rem; transition: background .15s;
+  }
+  .lb-btns button:hover { background: rgba(255,255,255,.3); }
+
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; flex-direction: column; gap: 10px; }
+    .stats { margin: 16px 16px 0; padding: 12px 10px; }
+    .notice { margin: 10px 16px 0; }
+    .grid { padding: 16px 16px 40px; grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>🍓 10 Đánh Giá 5 Sao – Cây Dâu Tây</h1>
+    <p>Shop: vuonsaunha3126 &nbsp;·&nbsp; Shopee &nbsp;·&nbsp; Lấy ngày 05/06/2026</p>
+  </div>
+  <div class="header-badge">⭐ 5 SAO · CÓ HÌNH ẢNH</div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="num">459</div><div class="lbl">Tổng 5⭐ về dâu tây</div></div>
+  <div class="stat"><div class="num">10</div><div class="lbl">Review được chọn</div></div>
+  <div class="stat"><div class="num" id="totalImgs">—</div><div class="lbl">Tổng hình ảnh</div></div>
+  <div class="stat"><div class="num">100%</div><div class="lbl">Đánh giá tốt</div></div>
+</div>
+
+<div class="notice">
+  ⚠️ <strong>Lưu ý:</strong> Shopee seller portal API không expose URL video trực tiếp. Shop có video review nhưng cần truy cập trang sản phẩm phía người mua để lấy link video.
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- Lightbox -->
+<div id="lb">
+  <span id="lb-close" onclick="closeLb()">✕</span>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-info"></div>
+  <div class="lb-btns">
+    <button onclick="lbMove(-1)">← Trước</button>
+    <button onclick="lbMove(1)">Sau →</button>
+  </div>
+</div>
+
+<script>
+const CDN = 'https://cf.shopee.vn/file/';
+const reviews = [
+  {stt:1,user:"u3uywxthxs",date:"19:59 08/04/2025",order:"2503313MUUU2FF",
+   product:"(Mua 10 tặng 2) Cây dâu tây cấy mô con chọn nhiều giống",
+   comment:"Có mấy cây bị hư và chết nhưng shop bù lại cho mik ht luon mik thấy cây sky là khoẻ nhất nên mua giống sky nha mn shop lm việc rất chuyên nghiệp và nhiệt tình luôn á",
+   reply:"Cảm ơn bạn, vì thời gian vận chuyển đơn cửa bạn là 8 ngày làm cây ko như cam kết của shop nên shop bù lại cho bạn hết 12 cây.",
+   followUp:null,
+   imgs:["vn-11134103-7ra0g-m8bz234vppc232","vn-11134103-7ra0g-m8bz235frp8idc","vn-11134103-7ra0g-m8bz2355papuf6","vn-11134103-7ra0g-m8bz235fqaf896","vn-11134103-7ra0g-m8bz235fovus6d"],
+   vids:[]},
+  {stt:2,user:"kh3of6v_q2",date:"10:47 07/04/2025",order:"250329TY67DCS8",
+   product:"(Mua 10 tặng 2) Cây dâu tây cấy mô con chọn nhiều giống",
+   comment:"Chất lượng sản phẩm:tốt\n\nCây sau 5 ngày phát triển rất tốt rễ nhiều mà lá lại ít có 2 cây bị gãy ngọn\nTheo dõi shop từ tik qua fb rất uy tín",
+   reply:"Cảm ơn bạn!!!",followUp:null,
+   imgs:["vn-11134103-7ra0g-m89zuns79gnb31","vn-11134103-7ra0g-m89zuns7av7rb4","vn-11134103-7ra0g-m89zuns7c9s716","vn-11134103-7ra0g-m89zuns7docne4","vn-11134103-7ra0g-m89zuns7f2x340"],
+   vids:[]},
+  {stt:3,user:"tramtrm",date:"18:08 19/03/2025",order:"250315NBE1R3RV",
+   product:"(Mua 10 tặng 2) Cây dâu tây cấy mô con chọn nhiều giống",
+   comment:"Chất lượng sản phẩm:rất tốt\n\nGiao hàng hơi lâu nhưng đóng gói rất chỉnh chu , gỡ băng keo đơ người luôn,cây xanh tươi .Tóm lại là nên mua!",
+   reply:"Cảm ơn bạn!!!",followUp:null,
+   imgs:["vn-11134103-7ra0g-m7jbib3tgdv7d9","vn-11134103-7ra0g-m7jbib1m0hmbd2","vn-11134103-7ra0g-m7jbib1ljmsze1","vn-11134103-7ra0g-m7jbib1ljmrg49","vn-11134103-7ra0g-m7jbib25itj055"],
+   vids:[]},
+  {stt:4,user:"thihuongnguyen396",date:"20:57 15/05/2024",order:"24051266585PWU",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Chất lượng sản phẩm:uk\n\nGHN cây về đến nơi cũng xanh đẹp ạ đc tăng thêm 2c nx  nói chung nên mua nha mn 😊",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7r98o-lvbvr48lrn8ked","vn-11134103-7r98o-lvbvr48lc6ml63","vn-11134103-7r98o-lvbvr48bcllw6f","vn-11134103-7r98o-lvbvr48lc6zo4c","vn-11134103-7r98o-lvbvr48lrmvh88"],
+   vids:[]},
+  {stt:5,user:"maianh15062k",date:"20:07 17/10/2023",order:"231011M943CFXR",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Chất lượng sản phẩm:rất tốt\n\nDù ở xa giao hàng có hơi lâu nhưng cây vẫn khoẻ và đóng gói rất chắc chắn. Nên mua nha mọi người",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7r98o-lmyo8zrvpbrza4","vn-11134103-7r98o-lmyo8zrv9vj348","vn-11134103-7r98o-lmyo8zrv727332","vn-11134103-7r98o-lmyo8zrw4s0v9f","vn-11134103-7r98o-lmyo8zrvb9wff9"],
+   vids:[]},
+  {stt:6,user:"trhalm",date:"16:57 15/10/2023",order:"2309101QJES19K",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Sản phẩm rất tốt , Cây rất đẹp .\nĐóng gói rất kĩ .\nTỉ lệ sống 9/10 ( Nguyên nhân là do mình trồng chưa có kinh nghiệm nhiều ).\nChat cho shop shop phản hồi rất nhanh.\n=> Theo mình sản phẩm rất xứng đáng với giá tiền .",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7r98o-lmvmouxmo3j3c0","vn-11134103-7r98o-lmvmouxmpi3j82","vn-11134103-7r98o-lmvmouxmqwnz42","vn-11134103-7r98o-lmvmouxmsb8f6f","vn-11134103-7r98o-lmvmouxmtpsveb"],
+   vids:[]},
+  {stt:7,user:"hientranggg20",date:"11:16 05/08/2023",order:"23071537U2P7EU",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Chất lượng tốt nhé, lần 2 mua cây hơi yếu với nhỏ lần 1 mua rất ưng ý cây đến giờ vẫn sống hẳn 1 cây do không biết chăm, shop hỗ trợ nhiệt tình và cbi mua thêm lần nữa :))",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7qukw-lk1yg4g2a6r829","vn-11134103-7qukw-lk1yg4g1uqded3","vn-11134103-7qukw-lk1yg4gbubw4b1","vn-11134103-7qukw-lk1yg4g2a6ma37","vn-11134103-7qukw-lk1yg4g1uqiccc"],
+   vids:[]},
+  {stt:8,user:"7j1khcy22j",date:"18:32 22/07/2023",order:"230719D5Y1NMN9",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Chất lượng sản phẩm:tốt  nhé\n\nĐã  nhận được  hàng cây  cực  kì tốt  với  ba  ngày tưởng  cây  hỏng nhưng  may  ko hỏng cây  nào cho shop  5 sao lần  sau lại ủng hộ tiếp nhé",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7qukw-ljiektv8a9isd7","vn-11134103-7qukw-ljiektv7ut9w83","vn-11134103-7qukw-ljiektwlu6r85c","vn-11134103-7qukw-ljiektv7fd107b","vn-11134103-7qukw-ljiektwleqic6d"],
+   vids:[]},
+  {stt:9,user:"havy_1993",date:"14:00 03/04/2023",order:"230331UFRWD2PG",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Chất lượng sản phẩm:okk\n\nShop giao nhanh lắm nha,gói hàng cực kĩ đến tay mình hộp rất nguyên vẹn ko móp méo chỗ nào hết,cây thì rất tươi luôn ko thấy 1 lá héo nào,cây khỏe lắm có chồi non,riêng 2 cây hàn nó nhỏ quá ko biết sống ổn ko🥲",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7qukw-lf54unlbyop6b8","vn-11134103-7qukw-lf54unllzone42","vn-11134103-7qukw-lf54unllya2yc3","vn-11134103-7qukw-lf54unlm137u7d","vn-11134103-7qukw-lf54x7pl5qx6f1"],
+   vids:[]},
+  {stt:10,user:"nj0aafmq3s",date:"11:22 10/05/2024",order:"240507Q2MGWCYC",
+   product:"Combo Cây Dâu Tây Cấy Mô Chịu Nhiệt ĐƯỢC CHỌN NHIỀU GIỐNG",
+   comment:"Mình mua nhiều lần r.Cây khoẻ,chỉ có được tặng thêm chứ k có bao giờ thiếu nha.",
+   reply:null,followUp:null,
+   imgs:["vn-11134103-7r98o-lv46dp93hmnt7d","vn-11134103-7r98o-lv46dp94fcah34","vn-11134103-7r98o-lv46dp93x2wpa7","vn-11134103-7r98o-lv46dp9dh7yyeb"],
+   vids:[]}
+];
+
+// Lightbox state
+let lbAll = [], lbIdx = 0;
+function openLb(imgs, i) { lbAll=imgs; lbIdx=i; showLb(); }
+function showLb() {
+  document.getElementById('lb-img').src = CDN+lbAll[lbIdx];
+  document.getElementById('lb-info').textContent = `${lbIdx+1} / ${lbAll.length}`;
+  document.getElementById('lb').classList.add('on');
+}
+function closeLb() { document.getElementById('lb').classList.remove('on'); }
+function lbMove(d) { lbIdx=(lbIdx+d+lbAll.length)%lbAll.length; showLb(); }
+document.getElementById('lb').addEventListener('click', e => { if(e.target.id==='lb') closeLb(); });
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('lb').classList.contains('on')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowLeft') lbMove(-1);
+  if(e.key==='ArrowRight') lbMove(1);
+});
+
+// Build cards
+let totalImgs = 0;
+const grid = document.getElementById('grid');
+reviews.forEach(r => {
+  totalImgs += r.imgs.length + r.vids.length;
+  const n = r.imgs.length + r.vids.length;
+  const nClass = Math.min(n, 5);
+  const mediaHtml = [
+    ...r.imgs.map((id,i)=>`
+      <div class="thumb" onclick="openLb(${JSON.stringify([...r.imgs,...r.vids])},${i})">
+        <img src="${CDN}${id}" alt="ảnh ${i+1}" loading="lazy">
+      </div>`),
+    ...r.vids.map((id,i)=>`
+      <div class="thumb" onclick="openLb(${JSON.stringify([...r.imgs,...r.vids])},${r.imgs.length+i})">
+        <img src="${CDN}${id}" alt="video ${i+1}" loading="lazy">
+        <div class="vid-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>`)
+  ].join('');
+
+  const replyHtml = r.reply ? `
+    <div class="reply">
+      <div class="reply-lbl">💬 Phản hồi của Shop</div>
+      ${r.reply}
+    </div>` : '';
+
+  const followHtml = r.followUp ? `
+    <div class="follow-up">
+      <div class="follow-up-lbl">🔄 Đánh giá thêm</div>
+      ${r.followUp}
+    </div>` : '';
+
+  grid.innerHTML += `
+    <div class="card">
+      <div class="card-top">
+        <div class="badge-num">${r.stt}</div>
+        <div class="user-block">
+          <div class="username">👤 ${r.user}</div>
+          <div class="meta">${r.date} &nbsp;·&nbsp; ${r.imgs.length} ảnh${r.vids.length?` · ${r.vids.length} video`:''}</div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="card-body">
+        <div class="product-pill">🛍️ ${r.product}</div>
+        <div class="order-tag">Đơn: ${r.order}</div>
+        <p class="comment">${r.comment}</p>
+        <div class="img-strip n${nClass}">${mediaHtml}</div>
+        ${replyHtml}${followHtml}
+      </div>
+    </div>`;
+});
+document.getElementById('totalImgs').textContent = totalImgs;
+</script>
+</body>
+</html>
